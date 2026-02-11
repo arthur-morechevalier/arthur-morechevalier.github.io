@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arthur More-Chevalier – Développeur Full-Stack</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap');
+        :root {
+            --primary: #00d4ff;
+            --text: #f0f0f0;
+            --gray: #bbbbbb;
+            --dark: #1c1c1c;
+        }
+        body {
+            background-color: var(--dark);
+            color: var(--text);
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            min-height: 100vh;
+            line-height: 1.7;
+        }
+        body::after {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background: url('https://images.unsplash.com/photo-1526342183395-f67792d4970c?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3') no-repeat center center fixed;
+            background-size: cover;
+            opacity: 0.28;
+            z-index: -1;
+            animation: zoomIn 24s infinite alternate ease-in-out;
+        }
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 4rem 1.5rem 10rem;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        h1 {
+            font-size: clamp(2.8rem, 7vw, 3.8rem);
+            font-weight: 300;
+            margin: 0 0 0.5rem;
+            text-shadow: 0 4px 14px rgba(0,0,0,0.7);
+        }
+        .subtitle {
+            font-size: clamp(1.4rem, 4vw, 1.8rem);
+            color: var(--gray);
+            margin-bottom: 1rem;
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 1.15rem;
+            transition: color 0.3s ease;
+        }
+        .back-link:hover {
+            color: white;
+        }
+        .presentation {
+            max-width: 780px;
+            margin: 0 auto 5rem;
+            text-align: center;
+            font-size: 1.22rem;
+            color: #e0e0e0;
+        }
+        .presentation strong {
+            color: var(--primary);
+        }
+        .section {
+            margin-bottom: 6rem;
+        }
+        .section h2 {
+            font-size: clamp(2rem, 5vw, 2.6rem);
+            color: var(--primary);
+            margin: 0 0 2rem;
+            font-weight: 400;
+            text-align: center;
+            position: relative;
+        }
+        .section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 2px;
+            background: var(--primary);
+            opacity: 0.4;
+            border-radius: 1px;
+        }
+
+        /* === Expériences – version sobre === */
+        .experiences {
+            background: rgba(30, 35, 45, 0.6);
+            border-radius: 12px;
+            padding: 2rem 2.2rem;
+            border: 1px solid rgba(0, 212, 255, 0.15);
+            max-width: 820px;
+            margin: 0 auto 5rem;
+        }
+        .experiences ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            font-size: 1.08rem;
+            line-height: 1.9;
+        }
+        .experiences li {
+            margin: 1.6rem 0;
+            padding-left: 1.9rem;
+            position: relative;
+        }
+        .experiences li strong {
+            color: var(--primary);
+            font-weight: 500;
+        }
+        /* Petit cercle discret pour les expériences principales */
+        .experiences > ul > li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0.6em;
+            width: 9px;
+            height: 9px;
+            background: var(--primary);
+            border-radius: 50%;
+            opacity: 0.85;
+            border: 1px solid rgba(0, 212, 255, 0.5);
+        }
+        .experiences ul ul {
+            margin-top: 0.6rem;
+            padding-left: 1.9rem;
+        }
+        .experiences ul ul li {
+            padding-left: 1.4rem;
+            margin: 0.45rem 0;
+            color: #e0e0e0;
+        }
+        /* Flèche fine ou tiret pour les sous-points */
+        .experiences ul ul li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-size: 1.1rem;
+            line-height: 1;
+            opacity: 0.8;
+        }
+        /* Variante encore plus sobre si tu veux (décommente et commente la flèche ci-dessus) */
+        /* .experiences ul ul li::before { content: "–"; font-size: 1.3rem; opacity: 0.7; } */
+
+        /* Compétences – version ultra simple */
+        .skills-simple {
+            background: rgba(30, 35, 45, 0.6);
+            border-radius: 12px;
+            padding: 2rem 2.2rem;
+            border: 1px solid rgba(0, 212, 255, 0.15);
+            max-width: 820px;
+            margin: 0 auto;
+        }
+        .skills-simple ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            font-size: 1.08rem;
+            line-height: 2;
+        }
+        .skills-simple li {
+            margin: 1.1rem 0;
+            padding-left: 1.8rem;
+            position: relative;
+        }
+        .skills-simple li strong {
+            color: var(--primary);
+            font-weight: 500;
+        }
+        .skills-simple li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-size: 1.3rem;
+        }
+
+        .passions {
+            text-align: center;
+            font-size: 1.25rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .passions ul {
+            list-style: none;
+            padding: 0;
+            margin: 2.2rem 0 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem 3.2rem;
+        }
+        .passions li {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            white-space: nowrap;
+        }
+        .passions li i, .passions li span.emoji {
+            font-size: 1.8rem;
+            color: var(--primary);
+        }
+        .tags {
+            margin-top: 2.5rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            justify-content: center;
+        }
+        .tag {
+            background: rgba(0,212,255,0.12);
+            color: var(--primary);
+            padding: 0.5rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.98rem;
+            border: 1px solid rgba(0,212,255,0.25);
+        }
+        .contact-linkedin {
+            text-align: center;
+            margin: 2.5rem 0 4rem;
+            font-size: 1.25rem;
+        }
+        .contact-linkedin p {
+            margin: 0 0 1.5rem;
+        }
+        .linkedin-link {
+            color: var(--primary);
+            font-size: 3.5rem;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+        .linkedin-link:hover {
+            color: white;
+            transform: scale(1.1);
+        }
+        .linkedin-post-card {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.12), rgba(30, 35, 45, 0.7));
+            border: 1px solid var(--primary);
+            border-radius: 16px;
+            padding: 2rem 1.8rem;
+            max-width: 700px;
+            margin: 3rem auto 1rem;
+            text-align: center;
+            box-shadow: 0 8px 30px rgba(0, 212, 255, 0.15);
+            transition: all 0.4s ease;
+        }
+        .linkedin-post-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 40px rgba(0, 212, 255, 0.25);
+        }
+        .linkedin-post-card h3 {
+            color: var(--primary);
+            font-size: 1.6rem;
+            margin: 0 0 1rem;
+        }
+        .linkedin-post-card p {
+            font-size: 1.15rem;
+            margin: 0 0 1.5rem;
+            color: #e0e0e0;
+        }
+        .linkedin-post-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            background: var(--primary);
+            color: var(--dark);
+            padding: 1rem 2.2rem;
+            border-radius: 50px;
+            font-size: 1.15rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .linkedin-post-btn:hover {
+            background: white;
+            color: var(--primary);
+            transform: scale(1.05);
+        }
+        footer {
+            text-align: center;
+            padding: 5rem 0 2rem;
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+        .footer-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2.5rem;
+            margin-bottom: 1.8rem;
+            flex-wrap: wrap;
+        }
+        .vinyl {
+            width: 70px;
+            height: 70px;
+            background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/LP_vinyl_record.png/600px-LP_vinyl_record.png') center/cover;
+            border-radius: 50%;
+            animation: spin 6s linear infinite;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        iframe {
+            width: 300px;
+            height: 80px;
+            border: none;
+            opacity: 0.82;
+        }
+        iframe:hover { opacity: 1; }
+        /* Fade-in */
+        .container > * {
+            opacity: 0;
+            animation: fadeIn 1.1s ease-out forwards;
+        }
+        .presentation { animation-delay: 0.6s; }
+        .experiences { animation-delay: 0.8s; }
+        .section:nth-of-type(1) { animation-delay: 1.0s; }
+        .section:nth-of-type(2) { animation-delay: 1.2s; }
+        .section:nth-of-type(3) { animation-delay: 1.4s; }
+        @keyframes fadeIn { to { opacity: 1; } }
+        @media (max-width: 768px) {
+            .skills-simple, .experiences { padding: 1.6rem; }
+            .passions ul { gap: 1.6rem 2.6rem; font-size: 1.15rem; }
+            .passions li i, .passions li span.emoji { font-size: 1.6rem; }
+        }
+        @media (max-width: 600px) {
+            .container { padding: 3rem 1rem 8rem; }
+            .linkedin-link { font-size: 3rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Arthur More-Chevalier</h1>
+            <div class="subtitle">Développeur Full-Stack • PHP / Symfony / React</div>
+            <a href="index.html" class="back-link">
+                <i class="fas fa-arrow-left"></i> Retour à l'accueil
+            </a>
+        </header>
+
+        <div class="presentation">
+            <p>Bonjour ! 🌊🧘‍♂️</p>
+            <p>Développeur full-stack de 37 ans avec <strong>plus de 10 ans d’expérience</strong>, forte appétence pour le front-end (React, Vue.js) et solide maîtrise du back-end (PHP 8 / Symfony).</p>
+            <p>Je souhaite aujourd’hui mettre mes compétences au service de projets à fort impact social, en rejoignant une structure du <strong>service public</strong> ou de la <strong>protection sociale</strong>. ❤️</p>
+            <p>Actuellement en CDD à l’Académie de Bordeaux (Rectorat) jusqu’en août 2026, je suis <strong>disponible dès maintenant</strong> (idéalement en CDI).</p>
+        </div>
+
+        <div class="section">
+            <h2>Mes expériences marquantes</h2>
+            <div class="experiences">
+                <ul>
+                    <li>
+                        <strong>10 ans à la CPAM Gironde</strong> : conception, développement et maintien d’applications métier critiques pour faciliter l’accès aux droits des assurés
+                        <ul>
+                            <li>Stack principal : PHP 8 • Symfony 6</li>
+                            <li>Frontend : Vue.js 3 / React</li>
+                            <li>Base de données : PostgreSQL</li>
+                            <li>Méthodes agiles : Jira, user stories, Scrum daily & rituels</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>Depuis août 2023 au Rectorat</strong> :
+                        <ul>
+                            <li>Gestion de projets multi-sites</li>
+                            <li>Pilotage de backlog & priorisation</li>
+                            <li>Coordination inter-équipes</li>
+                            <li>Adaptation très rapide à de nouveaux contextes de l'éducation nationale</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Mes compétences techniques</h2>
+            <div class="skills-simple">
+                <ul>
+                    <li><strong>Back-end</strong> : PHP 8.x, Symfony 5/6, Domain-Driven Design (DDD)</li>
+                    <li><strong>Front-end</strong> : JavaScript (ES6+), TypeScript, React 17+, Vue.js 3, HTML5, CSS3, Tailwind CSS</li>
+                    <li><strong>Bases de données</strong> : PostgreSQL, MySQL</li>
+                    <li><strong>Outils & versionning</strong> : Git, GitLab CI/CD, Docker, Docker Compose, Yarn, NPM</li>
+                    <li><strong>Éditeurs & environnements</strong> : VS Code, PhpStorm, Linux (Ubuntu)</li>
+                    <li><strong>Design & prototypage</strong> : Figma (maquettage & prototypes interactifs), notions UX/UI, accessibilité web (a11y)</li>
+                    <li><strong>Autres</strong> : API REST, debugging / profiling / logs, traitement tickets GLPI, optimisation performances</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Ce qui me fait vibrer 🌟</h2>
+            <div class="passions">
+                <ul>
+                    <li><span class="emoji">📖</span> Lecture — philosophie, histoire, développement personnel, spiritualité</li>
+                    <li><i class="fas fa-music"></i> Musique — rock, métal, jazz, classique, funk (souvent vinyle)</li>
+                    <li><span class="emoji">🌊</span> Surf — connexion à la nature et à l’océan</li>
+                    <li><span class="emoji">🏃‍♂️</span> Course à pied — endurance et bien-être physique</li>
+                    <li><span class="emoji">🧘‍♂️</span> Méditation — pratique régulière pour l’équilibre mental</li>
+                    <li><span class="emoji">🧘</span> Hatha Yoga — souplesse, respiration, détente profonde</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Ce que je recherche 🎯</h2>
+            <p style="text-align:center; max-width:760px; margin:0 auto 2rem; font-size:1.18rem;">
+                Rejoindre une structure du <strong>service public social</strong><br>
+                (MSA, CPAM, CARSAT, CAF, URSSAF, ACOSS, caisses de retraite, mutuelles, France Travail, France services, insertion professionnelle…)<br><br>
+                Poste idéal : <strong>Développeur Full-Stack</strong> ou <strong>Backend/ Front-end-dominant PHP / Symfony/ React</strong><br>
+                Localisation : <strong>Bordeaux métropole</strong>
+            </p>
+        </div>
+
+        <div class="section" style="text-align:center;">
+            <p style="font-size:1.3rem; margin:2rem 0;">
+                N’hésitez pas à me contacter ou à partager autour de vous 🙏
+            </p>
+            <div class="contact-linkedin">
+                <p>Pour me contacter ou pour plus d'informations sur mon profil, rendez-vous sur mon LinkedIn 👇</p>
+                <a href="https://www.linkedin.com/in/arthur-more-chevalier-6a541378/" target="_blank" class="linkedin-link" title="Mon profil LinkedIn">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+            </div>
+            <div class="linkedin-post-card">
+                <h3>#OpenToWork – Détails & visibilité maximale</h3>
+                <p>Découvrez mon post LinkedIn récent où je détaille mon parcours, mes motivations et ce que je recherche précisément dans la protection sociale / service public.</p>
+                <a href="https://www.linkedin.com/posts/arthur-more-chevalier-6a541378_opentowork-daezveloppeurfullstack-protectionsociale-activity-7426964181729333248-FyPo?utm_source=share&utm_medium=member_desktop&rcm=ACoAABBvWR0B1KgoKmK6q7COuJTn8JfuD0p01Qo"
+                   target="_blank"
+                   class="linkedin-post-btn">
+                    <i class="fab fa-linkedin-in"></i> Voir mon post #OpenToWork
+                </a>
+            </div>
+            <div class="tags">
+                <span class="tag">#OpenToWork</span>
+                <span class="tag">#DéveloppeurFullStack</span>
+                <span class="tag">#Symfony</span>
+                <span class="tag">#PHP</span>
+                <span class="tag">#ProtectionSociale</span>
+                <span class="tag">#ServicePublic</span>
+                <span class="tag">#Bordeaux</span>
+                <span class="tag">#EmploiCDI</span>
+            </div>
+        </div>
+
+        <footer>
+            <div class="footer-content">
+                <div class="vinyl"></div>
+                <iframe src="https://open.spotify.com/embed/playlist/37i9dQZF1DWVFeEut75IAL?si=wfd5toctQcKPelxn9mrhig" allow="encrypted-media"></iframe>
+            </div>
+            <p>Disponible immédiatement – Région bordelaise</p>
+        </footer>
+    </div>
+</body>
+</html>
