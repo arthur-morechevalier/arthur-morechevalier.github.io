@@ -96,8 +96,6 @@
             opacity: 0.4;
             border-radius: 1px;
         }
-
-        /* === Expériences – version sobre === */
         .experiences {
             background: rgba(30, 35, 45, 0.6);
             border-radius: 12px;
@@ -122,7 +120,6 @@
             color: var(--primary);
             font-weight: 500;
         }
-        /* Petit cercle discret pour les expériences principales */
         .experiences > ul > li::before {
             content: "";
             position: absolute;
@@ -144,7 +141,6 @@
             margin: 0.45rem 0;
             color: #e0e0e0;
         }
-        /* Flèche fine ou tiret pour les sous-points */
         .experiences ul ul li::before {
             content: "→";
             position: absolute;
@@ -154,10 +150,6 @@
             line-height: 1;
             opacity: 0.8;
         }
-        /* Variante encore plus sobre si tu veux (décommente et commente la flèche ci-dessus) */
-        /* .experiences ul ul li::before { content: "–"; font-size: 1.3rem; opacity: 0.7; } */
-
-        /* Compétences – version ultra simple */
         .skills-simple {
             background: rgba(30, 35, 45, 0.6);
             border-radius: 12px;
@@ -189,7 +181,6 @@
             color: var(--primary);
             font-size: 1.3rem;
         }
-
         .passions {
             text-align: center;
             font-size: 1.25rem;
@@ -214,6 +205,20 @@
         .passions li i, .passions li span.emoji {
             font-size: 1.8rem;
             color: var(--primary);
+        }
+        .passions .passions-note {
+            margin: 3rem auto 1rem;
+            max-width: 720px;
+            font-size: 1.16rem;
+            line-height: 1.65;
+            color: #d0eaff;
+            background: rgba(0, 212, 255, 0.06);
+            padding: 1.5rem 2rem;
+            border-radius: 12px;
+            border: 1px solid rgba(0, 212, 255, 0.18);
+        }
+        .passions .passions-note p {
+            margin: 0;
         }
         .tags {
             margin-top: 2.5rem;
@@ -320,7 +325,6 @@
             opacity: 0.82;
         }
         iframe:hover { opacity: 1; }
-        /* Fade-in */
         .container > * {
             opacity: 0;
             animation: fadeIn 1.1s ease-out forwards;
@@ -335,6 +339,7 @@
             .skills-simple, .experiences { padding: 1.6rem; }
             .passions ul { gap: 1.6rem 2.6rem; font-size: 1.15rem; }
             .passions li i, .passions li span.emoji { font-size: 1.6rem; }
+            .passions .passions-note { padding: 1.2rem 1.5rem; font-size: 1.08rem; }
         }
         @media (max-width: 600px) {
             .container { padding: 3rem 1rem 8rem; }
@@ -411,6 +416,13 @@
                     <li><span class="emoji">🧘‍♂️</span> Méditation — pratique régulière pour l’équilibre mental</li>
                     <li><span class="emoji">🧘</span> Hatha Yoga — souplesse, respiration, détente profonde</li>
                 </ul>
+
+                <div class="passions-note">
+                    <p>
+                        Mes passions m’aident à rester calme, stable et centré, ce qui se ressent dans mon approche professionnelle.<br>
+                        
+                    </p>
+                </div>
             </div>
         </div>
 
@@ -419,7 +431,7 @@
             <p style="text-align:center; max-width:760px; margin:0 auto 2rem; font-size:1.18rem;">
                 Rejoindre une structure du <strong>service public social</strong><br>
                 (MSA, CPAM, CARSAT, CAF, URSSAF, ACOSS, caisses de retraite, mutuelles, France Travail, France services, insertion professionnelle…)<br><br>
-                Poste idéal : <strong>Développeur Full-Stack</strong> ou <strong>Backend/ Front-end-dominant PHP / Symfony/ React</strong><br>
+                Poste idéal : <strong>Développeur Full-Stack</strong> ou <strong>Front-end / Backend / PHP / Symfony/ React</strong><br>
                 Localisation : <strong>Bordeaux métropole</strong>
             </p>
         </div>
