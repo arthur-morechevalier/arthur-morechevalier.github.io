@@ -49,7 +49,7 @@
 
         .main-view {
             min-height: 100dvh;
-            padding: 1.8rem 1.2rem;
+            padding: 1.8rem 1rem;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -75,7 +75,7 @@
         .subtitle {
             font-size: 1.35rem;
             color: var(--gray);
-            margin: 0.6rem 0 1.8rem;
+            margin: 0.6rem 0 1.6rem;
             letter-spacing: 0.7px;
         }
 
@@ -96,9 +96,10 @@
             display: flex;
             flex-wrap: nowrap;
             justify-content: center;
-            gap: 1.1rem;
+            gap: 1.2rem;
             margin: 1.2rem 0 2rem;
-            padding: 0 0.5rem;
+            padding: 0 0.6rem;
+            max-width: 100%;
             overflow-x: auto;
             -webkit-overflow-scrolling: touch;
             scrollbar-width: none;
@@ -110,35 +111,40 @@
 
         .social-icons a {
             color: var(--text);
-            font-size: 2rem;
-            transition: all 0.25s ease;
+            font-size: 2.1rem;
+            transition: all 0.28s ease;
             flex-shrink: 0;
             line-height: 1;
-            padding: 3px;
+            padding: 6px;
+            border-radius: 12px;
+            background: rgba(255,255,255,0.02);
         }
 
         .social-icons a:hover {
-            transform: scale(1.25) translateY(-2px);
-            filter: drop-shadow(0 0 8px rgba(255,255,255,0.5));
+            transform: scale(1.18) translateY(-3px);
+            background: rgba(255,255,255,0.08);
+            box-shadow: 0 0 18px rgba(255,255,255,0.18);
+            filter: brightness(1.15);
         }
 
         .social-icons img {
-            width: 32px;
-            height: 32px;
+            width: 36px;
+            height: 36px;
             object-fit: contain;
-            transition: all 0.25s ease;
+            transition: all 0.28s ease;
+            border-radius: 8px;
         }
 
         .social-icons a:hover img {
-            filter: brightness(1.35) drop-shadow(0 0 8px currentColor);
+            filter: brightness(1.3) drop-shadow(0 0 10px currentColor);
         }
 
         .fa-laptop-code { color: var(--primary); }
-        .fa-blog { color: orange; animation: blink 2s infinite alternate; }
+        .fa-blog { color: orange; animation: blink 2.2s infinite alternate; }
         .fa-symfony { color: white; }
 
         .instagram-icon:hover img {
-            filter: brightness(1.4) drop-shadow(0 0 10px #e1306c) !important;
+            filter: brightness(1.35) drop-shadow(0 0 12px #e1306c) !important;
         }
 
         .job-alert {
@@ -186,7 +192,7 @@
 
         .footer {
             position: fixed;
-            bottom: 1rem;
+            bottom: 1.4rem;                    /* un peu plus d'espace en bas */
             left: 50%;
             transform: translateX(-50%);
             display: flex;
@@ -198,127 +204,79 @@
             z-index: 10;
         }
 
-        .footer:hover {
-            opacity: 1;
-        }
+        .footer:hover { opacity: 1; }
 
+        /* Lecteur Spotify agrandi et verrouillé */
         iframe {
-            width: 300px !important;
-            min-width: 300px !important;
-            max-width: 300px !important;
-            height: 75px !important;
+            width: 340px !important;
+            min-width: 340px !important;
+            max-width: 340px !important;
+            height: 90px !important;
             border: none;
             opacity: 0.82;
             transition: opacity 0.4s;
         }
 
-        iframe:hover {
-            opacity: 1;
-        }
+        iframe:hover { opacity: 1; }
 
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         @keyframes zoomIn { from { transform: scale(1); } to { transform: scale(1.06); } }
         @keyframes softPulse { 0%,100% { opacity: 0.92; transform: scale(1); } 50% { opacity: 1; transform: scale(1.025); } }
         @keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: 0.65; } }
 
-        /* ────────────────────────────────────────────── */
-        /* MEDIA QUERIES – ultra compact sur mobile       */
-        /* ────────────────────────────────────────────── */
+        /* MEDIA QUERIES – sans toucher au lecteur Spotify */
+        @media (max-width: 480px) {
+            .social-icons { gap: 0.9rem; padding: 0 0.8rem; margin: 1rem 0 1.8rem; }
+            .social-icons a { font-size: 1.9rem; padding: 5px; }
+            .social-icons img { width: 32px; height: 32px; }
+        }
 
         @media (max-width: 420px) {
-            h1 { font-size: 2.3rem; }
-            .subtitle { font-size: 1.15rem; margin-bottom: 1.6rem; }
-            .social-icons {
-                gap: 0.32rem;          /* ~5 px */
-                padding: 0 0.4rem;
-                margin: 1rem 0 1.8rem;
-            }
-            .social-icons a {
-                font-size: 1.8rem;
-                padding: 3px;
-            }
-            .social-icons img {
-                width: 27px;
-                height: 27px;
-            }
-            .job-alert { padding: 1.2rem 1.4rem; }
-            iframe { width: 290px !important; height: 72px !important; }
+            .social-icons { gap: 0.75rem; padding: 0 0.6rem; }
+            .social-icons a { font-size: 1.8rem; padding: 4px; }
+            .social-icons img { width: 30px; height: 30px; }
         }
 
         @media (max-width: 380px) {
-            h1 { font-size: 2.15rem; }
-            .subtitle { font-size: 1.08rem; }
-            .social-icons {
-                gap: 0.26rem;          /* ~4 px */
-                padding: 0 0.3rem;
-            }
-            .social-icons a {
-                font-size: 1.7rem;
-                padding: 2px;
-            }
-            .social-icons img {
-                width: 25px;
-                height: 25px;
-            }
-            .job-alert { padding: 1.1rem 1.3rem; }
+            .social-icons { gap: 0.6rem; padding: 0 0.5rem; }
+            .social-icons a { font-size: 1.75rem; padding: 4px; }
+            .social-icons img { width: 28px; height: 28px; }
         }
 
         @media (max-width: 340px) {
-            h1 { font-size: 2rem; }
-            .subtitle { font-size: 1rem; }
-            .social-icons {
-                gap: 0.20rem;          /* ~3 px – limite absolue */
-                padding: 0 0.25rem;
-            }
-            .social-icons a {
-                font-size: 1.6rem;
-                padding: 2px;
-            }
-            .social-icons img {
-                width: 23px;
-                height: 23px;
-            }
-            .job-alert h3 { font-size: 1.05rem; }
-            .job-alert p { font-size: 0.88rem; }
+            .social-icons { gap: 0.5rem; padding: 0 0.4rem; }
+            .social-icons a { font-size: 1.65rem; padding: 3px; }
+            .social-icons img { width: 26px; height: 26px; }
         }
 
         @media (min-width: 520px) {
-            h1 { font-size: 3.1rem; }
-            .subtitle { font-size: 1.6rem; margin-bottom: 2.2rem; }
-            .social-icons { gap: 1.2rem; margin: 1.8rem 0 3rem; }
-            .social-icons a { font-size: 2.4rem; }
-            .social-icons img { width: 38px; height: 38px; }
-            .job-alert { padding: 1.5rem 2.4rem; max-width: 680px; }
+            .social-icons { gap: 1.6rem; margin: 1.8rem 0 2.8rem; overflow-x: visible; }
+            .social-icons a { font-size: 2.3rem; }
+            .social-icons img { width: 40px; height: 40px; }
         }
 
         @media (min-width: 820px) {
-            h1 { font-size: 3.6rem; }
-            .subtitle { font-size: 1.9rem; }
-            .social-icons { gap: 1.8rem; margin-bottom: 4rem; }
-            .social-icons a { font-size: 2.7rem; }
-            .social-icons img { width: 44px; height: 44px; }
-            .job-alert { padding: 1.6rem 3rem; max-width: 720px; }
+            .social-icons { gap: 2.2rem; margin-bottom: 4rem; }
+            .social-icons a { font-size: 2.6rem; }
+            .social-icons img { width: 46px; height: 46px; }
         }
 
         @media (min-width: 1200px) {
-            h1 { font-size: 4.2rem; }
-            .subtitle { font-size: 2.1rem; }
-            .social-icons { gap: 2rem; margin-bottom: 4.5rem; }
+            .social-icons { gap: 2.4rem; margin-bottom: 4.5rem; }
             .social-icons a { font-size: 2.8rem; }
-            .social-icons img { width: 46px; height: 46px; }
-            .job-alert { max-width: 760px; }
+            .social-icons img { width: 48px; height: 48px; }
         }
     </style>
 </head>
 <body>
     <div class="main-view" id="mainView">
         <h1>Arthur More-Chevalier</h1>
-   
+  
         <div class="subtitle">
             <a href="#" id="subtitlePortfolioLink">Développeur Full-Stack</a>
             • Chocolat addict 🍫
         </div>
-     
+    
         <div class="social-icons">
             <a href="https://arthurmknight.substack.com/" title="Blog">
                 <i class="fas fa-blog"></i>
