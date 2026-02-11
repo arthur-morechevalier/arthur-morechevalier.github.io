@@ -41,7 +41,7 @@
             content: '';
             position: fixed;
             inset: 0;
-            background: url('https://images.unsplash.com/photo-1526342183395-f67792d4970c?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3') 
+            background: url('https://images.unsplash.com/photo-1526342183395-f67792d4970c?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3')
                         no-repeat center center;
             background-size: cover;
             opacity: 0.3;
@@ -149,11 +149,12 @@
             background: var(--alert-bg);
             border: 1px solid var(--alert-border);
             border-radius: 14px;
-            padding: 1.3rem 1.8rem;
-            max-width: 90%;
+            padding: 1.4rem 1.8rem;
+            max-width: 95%;
             cursor: pointer;
             transition: all 0.4s ease;
             text-align: center;
+            overflow: hidden;
         }
 
         .job-alert:hover {
@@ -171,49 +172,47 @@
         }
 
         .job-alert h3 {
-            margin: 0 0 0.6rem;
-            font-size: 1.22rem;
+            margin: 0 0 0.5rem;
+            font-size: 1.25rem;
             color: var(--alert-text);
             font-weight: 300;
         }
 
         .job-alert p {
-            margin: 0.3rem 0 0;
-            font-size: 1.05rem;
+            margin: 0;
+            font-size: clamp(0.97rem, 2.5vw, 1.03rem);
             color: #e0f7ff;
             opacity: 0.94;
-        }
-
-        .job-alert .more-info {
-            color: var(--primary);
-            text-decoration: underline;
-            text-underline-offset: 4px;
-            transition: all 0.3s;
-        }
-
-        .job-alert .more-info:hover {
-            color: #80e8ff;
+            word-break: break-word;
+            overflow-wrap: break-word;
+            hyphens: auto;
         }
 
         .footer {
             position: fixed;
-            bottom: 1rem;
+            bottom: 1.2rem;                    /* un peu plus haut pour respirer */
             left: 50%;
             transform: translateX(-50%);
             display: flex;
             align-items: center;
+            justify-content: center;
             gap: 1.6rem;
             opacity: 0.84;
             transition: opacity 0.5s;
+            z-index: 10;
+            pointer-events: auto;
         }
 
         .footer:hover {
             opacity: 1;
         }
 
+        /* Lecteur Spotify → taille augmentée et verrouillée */
         iframe {
-            width: 280px;
-            height: 70px;
+            width: 320px !important;
+            min-width: 320px !important;
+            max-width: 320px !important;
+            height: 80px !important;
             border: none;
             opacity: 0.82;
             transition: opacity 0.4s;
@@ -225,26 +224,22 @@
 
         /* Animations */
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        @keyframes slideIn { from { transform: translateY(50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
         @keyframes zoomIn { from { transform: scale(1); } to { transform: scale(1.06); } }
         @keyframes softPulse { 0%,100% { opacity: 0.92; transform: scale(1); } 50% { opacity: 1; transform: scale(1.025); } }
         @keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: 0.65; } }
 
-        /* ───────────────────────────────────────────────
-           MEDIA QUERIES – agrandissement progressif
-        ─────────────────────────────────────────────── */
-
-        /* Très petits écrans */
+        /* MEDIA QUERIES — sans impact sur footer/iframe */
         @media (max-width: 360px) {
             h1 { font-size: 2.3rem; }
             .subtitle { font-size: 1.15rem; }
             .social-icons { gap: 1.4rem; }
             .social-icons a { font-size: 2.1rem; }
             .social-icons img { width: 34px; height: 34px; }
-            iframe { width: 240px; height: 60px; }
+            .job-alert { padding: 1.3rem 1.4rem; max-width: 98%; }
+            .job-alert p { font-size: 0.94rem; }
+            /* Spotify reste 320×80px */
         }
 
-        /* Mobile → tablette portrait */
         @media (min-width: 520px) {
             h1 { font-size: 3.1rem; }
             .subtitle { font-size: 1.6rem; margin-bottom: 2.4rem; }
@@ -252,39 +247,40 @@
             .social-icons { gap: 2.6rem; margin: 2rem 0 3.5rem; }
             .social-icons a { font-size: 2.8rem; }
             .social-icons img { width: 44px; height: 44px; }
-            .job-alert { padding: 1.5rem 2.5rem; max-width: 580px; }
-            iframe { width: 320px; height: 80px; }
+            .job-alert { padding: 1.5rem 2.6rem; max-width: 680px; }
         }
 
-        /* Tablette / petit desktop */
         @media (min-width: 820px) {
             h1 { font-size: 3.6rem; }
             .subtitle { font-size: 1.9rem; }
             .passions { margin: 2rem 0 3rem; font-size: 1.15rem; }
-            .social-icons { gap: 3.2rem; margin-bottom: 4rem; }
-            .social-icons a { font-size: 3rem; }
-            .job-alert { margin-bottom: 5rem; padding: 1.6rem 3rem; }
+            .social-icons { gap: 2rem; margin-bottom: 4rem; }
+            .social-icons a { font-size: 2.7rem; }
+            .social-icons img { width: 46px; height: 46px; }
+            .job-alert { margin-bottom: 5rem; padding: 1.6rem 3.2rem; max-width: 720px; }
+            .job-alert h3 { font-size: 1.35rem; }
         }
 
-        /* Grand écran */
         @media (min-width: 1200px) {
             h1 { font-size: 4.2rem; }
             .subtitle { font-size: 2.1rem; }
-            .social-icons a { font-size: 3.4rem; }
-            .social-icons img { width: 52px; height: 52px; }
+            .social-icons { gap: 1.8rem; margin-bottom: 4.5rem; }
+            .social-icons a { font-size: 2.6rem; }
+            .social-icons img { width: 42px; height: 42px; }
             .passions { max-width: 800px; }
+            .job-alert { max-width: 760px; }
         }
     </style>
 </head>
 <body>
     <div class="main-view" id="mainView">
         <h1>Arthur More-Chevalier</h1>
-     
+    
         <div class="subtitle">
             <a href="#" id="subtitlePortfolioLink">Développeur Full-Stack</a>
             • Chocolat addict 🍫
         </div>
-       
+      
         <div class="social-icons">
             <a href="https://arthurmknight.substack.com/" title="Blog">
                 <i class="fas fa-blog"></i>
@@ -309,7 +305,7 @@
         <div class="job-alert" id="jobAlert">
             <h3><span class="highlight">👋 Je recherche activement un poste en 2026, merci ! </span></h3>
             <p>
-                <span id="jobTitleLink">Développeur Full-Stack</span> – Service public / Protection sociale – Bordeaux <br>
+                <span id="jobTitleLink">Développeur Full-Stack</span> – Service public / Protection sociale – Bordeaux
             </p>
         </div>
 
