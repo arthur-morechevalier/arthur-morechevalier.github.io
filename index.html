@@ -55,13 +55,6 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
-        }
-
-        .main-view.exit {
-            opacity: 0;
-            transform: translateY(-30px) scale(0.96);
-            pointer-events: none;
         }
 
         h1 {
@@ -77,19 +70,6 @@
             color: var(--gray);
             margin: 0.6rem 0 1.6rem;
             letter-spacing: 0.7px;
-        }
-
-        .subtitle a {
-            color: inherit;
-            text-decoration: none;
-            border-bottom: 1px solid transparent;
-            transition: all 0.3s ease;
-        }
-
-        .subtitle a:hover,
-        .subtitle a:focus {
-            border-bottom-color: var(--primary);
-            color: var(--primary);
         }
 
         .social-icons {
@@ -139,7 +119,6 @@
             filter: brightness(1.3) drop-shadow(0 0 10px currentColor);
         }
 
-        .fa-laptop-code { color: var(--primary); }
         .fa-blog { color: orange; animation: blink 2.2s infinite alternate; }
         .fa-symfony { color: white; }
 
@@ -148,6 +127,9 @@
         }
 
         .job-alert {
+            display: block;
+            text-decoration: none;
+            color: inherit;
             background: var(--alert-bg);
             border: 1px solid var(--alert-border);
             border-radius: 14px;
@@ -190,9 +172,22 @@
             hyphens: auto;
         }
 
+        .job-alert p + p {
+            margin-top: 0.35rem;
+            font-size: 0.9rem;
+            opacity: 0.75;
+        }
+
+        .job-alert .contact {
+            margin-top: 0.8rem;
+            font-size: 0.9rem;
+            color: var(--primary);
+            opacity: 1;
+        }
+
         .footer {
             position: fixed;
-            bottom: 1.4rem;                    /* un peu plus d'espace en bas */
+            bottom: 1.4rem;
             left: 50%;
             transform: translateX(-50%);
             display: flex;
@@ -269,67 +264,42 @@
     </style>
 </head>
 <body>
-    <div class="main-view" id="mainView">
+    <div class="main-view">
         <h1>Arthur More-Chevalier</h1>
-  
+
         <div class="subtitle">
-            <a href="#" id="subtitlePortfolioLink">Développeur Full-Stack</a>
-            • Chocolat addict 🍫
+            Développeur Full-Stack • Chocolat addict 🍫
         </div>
-    
+
         <div class="social-icons">
             <a href="https://arthurmknight.substack.com/" title="Blog">
                 <i class="fas fa-blog"></i>
             </a>
-            <a id="portfolioLink" title="Portfolio">
-                <i class="fas fa-laptop-code"></i>
-            </a>
-            <a href="https://www.linkedin.com/in/arthur-more-chevalier-6a541378/" target="_blank" title="LinkedIn">
+            <a href="https://www.linkedin.com/in/arthur-more-chevalier-6a541378/" target="_blank" rel="noopener" title="LinkedIn">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" alt="LinkedIn">
             </a>
-            <a href="https://www.instagram.com/arthurmknight/" target="_blank" title="Instagram" class="instagram-icon">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg" alt="Instagram">
-</a>
-            <a href="https://github.com/arthur-morechevalier" target="_blank" title="GitHub">
+            <a href="https://www.instagram.com/arthurmknight/" target="_blank" rel="noopener" title="Instagram" class="instagram-icon">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg" alt="Instagram">
+            </a>
+            <a href="https://github.com/arthur-morechevalier" target="_blank" rel="noopener" title="GitHub">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg" alt="GitHub" style="filter: invert(100%);">
             </a>
-            <a href="https://connect.symfony.com/profile/arthurmorec" target="_blank" title="Symfony Connect">
+            <a href="https://connect.symfony.com/profile/arthurmorec" target="_blank" rel="noopener" title="Symfony Connect">
                 <i class="fab fa-symfony"></i>
             </a>
         </div>
 
-        <div class="job-alert" id="jobAlert">
-            <h3><span class="highlight">👋 Je recherche activement un poste en 2026, merci ! </span></h3>
-            <p>
-                <span id="jobTitleLink">Développeur Full-Stack</span> – Service public / Protection sociale – Bordeaux
-            </p>
-        </div>
+        <a class="job-alert" href="mailto:arthur.morechevalier@gmail.com?subject=Proposition%20de%20poste%20-%20D%C3%A9veloppeur%20Full-Stack">
+            <h3><span class="highlight">👋 Je recherche un nouveau poste</span></h3>
+            <p>Développeur Full-Stack</p>
+            <p>Java, Angular, mais aussi PHP · J'aime me former aux nouvelles technos</p>
+            <p class="contact">✉️ arthur.morechevalier@gmail.com</p>
+        </a>
 
         <div class="footer">
             <iframe src="https://open.spotify.com/embed/playlist/37i9dQZF1DWVFeEut75IAL?si=wfd5toctQcKPelxn9mrhig"
                     allow="encrypted-media"></iframe>
         </div>
     </div>
-
-    <script>
-        const mainView = document.getElementById('mainView');
-        const portfolioLink = document.getElementById('portfolioLink');
-        const jobAlert = document.getElementById('jobAlert');
-        const jobTitleLink = document.getElementById('jobTitleLink');
-        const subtitlePortfolioLink = document.getElementById('subtitlePortfolioLink');
-
-        function goToPortfolio(e) {
-            e.preventDefault();
-            mainView.classList.add('exit');
-            setTimeout(() => {
-                window.location.href = 'portfolio.html';
-            }, 500);
-        }
-
-        if (portfolioLink) portfolioLink.addEventListener('click', goToPortfolio);
-        if (jobAlert) jobAlert.addEventListener('click', goToPortfolio);
-        if (jobTitleLink) jobTitleLink.addEventListener('click', goToPortfolio);
-        if (subtitlePortfolioLink) subtitlePortfolioLink.addEventListener('click', goToPortfolio);
-    </script>
 </body>
 </html>
