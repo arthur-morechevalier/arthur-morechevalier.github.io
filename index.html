@@ -122,6 +122,15 @@
         .fa-blog { color: orange; animation: blink 2.2s infinite alternate; }
         .fa-symfony { color: white; }
 
+        .social-icons a.disabled {
+            pointer-events: none;
+            cursor: default;
+            opacity: 0.35;
+            filter: grayscale(1);
+        }
+
+        .social-icons a.disabled .fa-symfony { color: var(--gray); }
+
         .instagram-icon:hover img {
             filter: brightness(1.35) drop-shadow(0 0 12px #e1306c) !important;
         }
@@ -284,7 +293,7 @@
             <a href="https://github.com/arthur-morechevalier" target="_blank" rel="noopener" title="GitHub">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg" alt="GitHub" style="filter: invert(100%);">
             </a>
-            <a href="https://connect.symfony.com/profile/arthurmorec" target="_blank" rel="noopener" title="Symfony Connect">
+            <a class="disabled" aria-disabled="true" title="Symfony Connect">
                 <i class="fab fa-symfony"></i>
             </a>
         </div>
@@ -293,6 +302,7 @@
             <h3><span class="highlight">👋 Je recherche un nouveau poste</span></h3>
             <p>Développeur Full-Stack</p>
             <p>Java, Angular, mais aussi PHP · J'aime me former aux nouvelles technos</p>
+            <p>Secteur public et social : CAF, CPAM, URSSAF, MSA, collectivités…</p>
             <p class="contact">✉️ arthur.morechevalier@gmail.com</p>
         </a>
 
